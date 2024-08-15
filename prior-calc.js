@@ -11,13 +11,13 @@ export function calcPriorMean(priorCoeffs, inputs) {
       if (typeof inputs[key] !== 'number' && inputs[key] !== undefined) {
         return NaN;
       }
-      console.log('key:', key);
-      console.log('priorCoeffs[key]:', priorCoeffs[key]);
-      console.log('inputs[key]:', inputs[key]);
+      console.log(`**** ${key} **** `);
+      console.log(`priorCoeffs[${key}]: `, priorCoeffs[key]);
+      console.log(`inputs[${key}]:` , inputs[key]);
 
-      
+      console.log(`coeff*input for ${key}:`, priorCoeffs[key] * (inputs[key]));
       priorMean += priorCoeffs[key] * (inputs[key] || 0);
-      console.log('priorMean:', priorMean);
+      console.log(`priorMean after ${key}:`, priorMean);
       
     }
   }

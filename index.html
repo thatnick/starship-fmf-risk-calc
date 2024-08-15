@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Preeclampsia Prediction Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
+    <script src="risk-calc.js" type="module"></script>
+  </head>
+  <body>
+    <h2>Preeclampsia Prediction Form</h2>
+    <form id="predictionForm">
+      <label for="age"
+        >Maternal Age at Estimated Date of Delivery (years):</label
+      >
+      <input
+        type="number"
+        id="age"
+        name="age"
+        value="25"
+        required
+      /><br /><br />
+
+      <label for="weight"
+        >Maternal Weight at the First Trimester Visit (kg):</label
+      >
+      <input
+        type="number"
+        id="weight"
+        name="weight"
+        value="70"
+        required
+      /><br /><br />
+
+      <label for="height">Maternal Height (cm):</label>
+      <input
+        type="number"
+        id="height"
+        name="height"
+        value="168"
+        required
+      /><br /><br />
+
+      <label for="ethnicity">Maternal Racial Origin:</label>
+      <select id="ethnicity" name="ethnicity" required>
+        <option value="white" selected>White</option>
+        <option value="black">Black</option>
+        <option value="south-asian">South Asian</option>
+        <option value="east-asian">East Asian</option></select
+      ><br /><br />
+
+      <label for="parity">Previous Obstetric History:</label>
+      <select id="parity" name="parity" required>
+        <option value="nulliparous" selected>Nulliparous</option>
+        <option value="parous-no-pe">Parous without previous PE</option>
+        <option value="parous-with-pe">Parous with previous PE</option></select
+      ><br /><br />
+
+      <div id="parousInputs">
+        <label for="preg-interval">Previous Pregnancy Interval (years):</label>
+        <input
+          type="number"
+          step="0.01"
+          id="preg-interval"
+          name="preg-interval"
+          value="2"
+          required
+        /><br /><br />
+
+        <label for="prev-gest-age"
+          >Gestational Age at Delivery of Previous Pregnancy (weeks):</label
+        >
+        <input
+          type="number"
+          step="0.01"
+          id="prev-gest-age"
+          name="prev-gest-age"
+          value="37"
+          required
+        /><br /><br />
+      </div>
+
+      <label for="fam-hist-pe">Family History of PE (Mother):</label>
+      <select id="fam-hist-pe" name="fam-hist-pe" required>
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option></select
+      ><br /><br />
+
+      <label for="conception">Method of Conception:</label>
+      <select id="conception" name="conception" required>
+        <option value="natural" selected>Natural</option>
+        <option value="ivf">IVF</option>
+        <option value="ovulation-drugs">Ovulation Drugs</option></select
+      ><br /><br />
+
+      <label for="chronic-hypert">History of Chronic Hypertension:</label>
+      <select id="chronic-hypert" name="chronic-hypert" required>
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option></select
+      ><br /><br />
+
+      <label for="diabetes">History of Diabetes Mellitus:</label>
+      <select id="diabetes" name="diabetes" required>
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option></select
+      ><br /><br />
+
+      <label for="autoimmune"
+        >History of Systemic Lupus Erythematosus or Antiphospolipid
+        Syndrome:</label
+      >
+      <select id="autoimmune" name="autoimmune" required>
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option></select
+      ><br /><br />
+
+      <h3>MoM Values</h3>
+      <label for="map">MAP:</label>
+      <input
+        type="number"
+        step="0.01"
+        id="map"
+        name="map"
+        value="1.049"
+      /><br /><br />
+      <label for="uta-pi">UtA-PI:</label>
+      <input
+        type="number"
+        step="0.01"
+        id="uta-pi"
+        name="uta-pi"
+        value="1.072"
+      /><br /><br />
+      <label for="plgf">PlGF:</label>
+      <input
+        type="number"
+        step="0.01"
+        id="plgf"
+        name="plgf"
+        value="1.526"
+      /><br /><br />
+
+      <button type="button" onclick="calcRisk()">Calculate Risk</button>
+    </form>
+    <p id="result"></p>
+  </body>
+</html>
